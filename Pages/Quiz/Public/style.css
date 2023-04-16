@@ -1,14 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   background-color: #ecf0f1;
+  font-family: 'Roboto', sans-serif;
+}
+
+.time {
+  position: fixed;
+  right: 15px;
+  top: 15px;
 }
 
 .holder {
   background-color: white;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 80%;
   height: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+}
+
+.question-holder {
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.question {
+  overflow-wrap: break-word;
+  font-size: 30px;
+  text-align: center;
+  padding: 25px;
+  color: #707070;
+}
+
+.answer-holder {
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.horizontal-content {
+  width: 50%;
+  height: 100%;
+}
+
+button {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  color: #707070;
+  border: 0.5px solid #707070;
+  transition: background-color 0.2s ease-in-out;
+  font-size: 25px;
+  padding: 25px;
+}
+
+button:hover {
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .question {
+    font-size: 20px;
+  }
 }
