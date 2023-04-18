@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: #ecf0f1;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#title {
+  margin: 100px;
+}
+
+.holder {
+  background-color: white;
+  border-radius: 20px;
+  width: 30%;
+  height: 50%;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form input[type='text'] {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  transition: background-color 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
+.form button {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.form input[type='text']:valid {
+  width: 100%;
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+.form button:hover {
+  background-color: #3498db;
+  border-color: #3498db;
+  color: white;
+}
