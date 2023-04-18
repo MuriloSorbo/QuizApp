@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const srcReader = require('./srcReader');
+const SrcReader = require('./SrcReader');
 
 const quizRouter = require('./Routes/quiz');
 const loginRouter = require('./Routes/login');
@@ -18,8 +18,7 @@ app.use('/Pages/Login/Public', express.static('Pages/Login/Public'));
 app.use('/quiz', quizRouter);
 app.use('/login', loginRouter);
 
-const obj = srcReader.read();
-console.log(obj.title);
+SrcReader.init();
 
 app.listen(port, () => {
   console.log('Server is listening!');

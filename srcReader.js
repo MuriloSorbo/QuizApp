@@ -1,12 +1,20 @@
 const fs = require('fs');
 
-function read() {
-  try {
-    const fileData = fs.readFileSync('./src.json');
-    return JSON.parse(fileData);
-  } catch {
-    return undefined;
+class SrcReader {
+  static #src;
+
+  static init() {
+    try {
+      const fileData = fs.readFileSync('./src.json');
+      this.#src = JSON.parse(fileData);
+    } catch {
+      this.#src = undefined;
+    }
+  }
+
+  static getSrc() {
+    return this.#src;
   }
 }
 
-module.exports = { read };
+module.exports = SrcReader;
