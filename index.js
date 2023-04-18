@@ -19,7 +19,7 @@ app.use('/quiz', quizRouter);
 app.use('/login', loginRouter);
 
 const obj = srcReader.read();
-console.log(obj[0]);
+console.log(obj.title);
 
 app.listen(port, () => {
   console.log('Server is listening!');
