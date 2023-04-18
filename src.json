@@ -1,0 +1,20 @@
+[
+  {
+    "Question": "Qual comando usado para ler uma entrada digital (btn) no Arduino?",
+    "A": "digitalWrite(btn);",
+    "B": "digitalRead(btn);",
+    "C": "digitalread(btn);",
+    "D": "DigitalRead(btn);",
+    "Correct": "B",
+    "Time": 30
+  },
+  {
+    "Question": "Qual comando usado para escrever em uma saída digital (led) no Arduino?",
+    "A": "digitalWrite(led);",
+    "B": "DigitalWrite(led, HIGH);",
+    "C": "digitalWrite(led, HIGH);",
+    "D": "DigitalRead(led);",
+    "Correct": "C",
+    "Time": 30
+  }
+]
