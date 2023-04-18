@@ -2,6 +2,7 @@ const fs = require('fs');
 
 class SrcReader {
   static #src;
+  static #started;
 
   static init() {
     try {
@@ -10,11 +11,22 @@ class SrcReader {
     } catch {
       this.#src = undefined;
     }
+
+    this.#started = false;
   }
 
   static getSrc() {
     return this.#src;
   }
+
+  static getStarted() {
+    return this.#started;
+  }
+
+  static Start() {
+    this.#started = true;
+  }
+
 }
 
 module.exports = SrcReader;

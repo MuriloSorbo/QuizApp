@@ -7,6 +7,7 @@ const quizRouter = require('./Routes/quiz');
 const loginRouter = require('./Routes/login');
 const titleRouter = require('./Routes/title');
 const waitingRouter = require('./Routes/waiting');
+const nameRouter = require('./Routes/name');
 
 const app = express();
 const port = 3000;
@@ -23,6 +24,7 @@ app.use('/quiz', quizRouter);
 app.use('/login', loginRouter);
 app.use('/title', titleRouter);
 app.use('/waiting', waitingRouter);
+app.use('/name', nameRouter);
 
 SrcReader.init();
 
