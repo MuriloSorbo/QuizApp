@@ -23,7 +23,7 @@ Router.post('/', (req, res) => {
     req.session.correct = 0;
     req.session.name = name;
     
-    res.redirect('/quiz');
+    res.redirect('/waiting');
     return;
   }
 
