@@ -18,8 +18,12 @@ Router.post('/', (req, res) => {
   }
 
   if (name) {
-    // Injetar os cookies
-    // Redirecionar para página quiz
+    req.session.authenticated = true;
+    req.session.question = 0;
+    req.session.correct = 0;
+    req.session.name = name;
+    
+    res.redirect('/quiz');
     return;
   }
 
