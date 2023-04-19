@@ -23,7 +23,7 @@ class SrcReader {
     return this.#started;
   }
 
-  static itart() {
+  static start() {
     this.#started = true;
   }
 
