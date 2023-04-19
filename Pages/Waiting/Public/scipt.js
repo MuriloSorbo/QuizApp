@@ -22,4 +22,5 @@ function getQuiz()
     request.send();
 }
 
+setInterval(getQuiz, 1000);
 getName();
