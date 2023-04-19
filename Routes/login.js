@@ -19,7 +19,7 @@ Router.post('/', (req, res) => {
   }
 
   req.session.authenticated = true;
-  req.session.question = 0;
+  req.session.question = -1;
   req.session.correct = 0;
   req.session.name = name;
 

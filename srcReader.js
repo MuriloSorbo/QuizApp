@@ -2,9 +2,10 @@ const fs = require('fs');
 
 class SrcReader {
   static #src;
-  static #started;
+  static #curQuestion;
 
   static init() {
+    this.#curQuestion = -1
     try {
       const fileData = fs.readFileSync('./src.json');
       this.#src = JSON.parse(fileData);
@@ -20,11 +21,12 @@ class SrcReader {
   }
 
   static getStarted() {
-    return this.#started;
+    return this.#curQuestion != -1;
   }
 
-  static start() {
-    this.#started = true;
+  static nextQuestion()
+  {
+    return ++this.#curQuestion >= this.#src.questions.length ? this.#src.questions.length : this.#curQuestion;
   }
 
 }
