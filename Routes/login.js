@@ -12,22 +12,22 @@ Router.get('/', (req, res) => {
 Router.post('/', (req, res) => {
   const name = req.body.name;
 
+  if (!name)
+  {
+    res.redirect('/login');
+    return;
+  }
+
+  req.session.authenticated = true;
+  req.session.question = 0;
+  req.session.correct = 0;
+  req.session.name = name;
+
   if (SrcReader.getSrc().mainPass == name) {
-    // Redirecionar para página main
-    return;
+    res.redirect('/main');
   }
-
-  if (name) {
-    req.session.authenticated = true;
-    req.session.question = 0;
-    req.session.correct = 0;
-    req.session.name = name;
-    
-    res.redirect('/waiting');
-    return;
-  }
-
-  res.redirect('/login');
+  else  res.redirect('/waiting');
+  
 });
 
 module.exports = Router;
