@@ -5,15 +5,14 @@ class SrcReader {
   static #curQuestion;
 
   static init() {
-    this.#curQuestion = -1
+    this.#curQuestion = -1;
+
     try {
       const fileData = fs.readFileSync('./src.json');
       this.#src = JSON.parse(fileData);
     } catch {
       this.#src = undefined;
     }
-
-    this.#started = false;
   }
 
   static getSrc() {
@@ -24,11 +23,11 @@ class SrcReader {
     return this.#curQuestion != -1;
   }
 
-  static nextQuestion()
-  {
-    return ++this.#curQuestion >= this.#src.questions.length ? this.#src.questions.length : this.#curQuestion;
+  static nextQuestion() {
+    return ++this.#curQuestion >= this.#src.questions.length
+      ? this.#src.questions.length
+      : this.#curQuestion;
   }
-
 }
 
 module.exports = SrcReader;

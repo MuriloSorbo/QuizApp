@@ -7,12 +7,11 @@ const checkAuthenticated = require('../checkAuthenticated');
 const Router = express.Router();
 
 Router.get('/', checkAuthenticated, (req, res) => {
-  if (SrcReader.getStarted())
-  { 
+  if (SrcReader.getStarted()) {
     res.sendFile(path.join(__dirname, '../Pages/Quiz/index.html'));
     return;
   }
-    
+
   res.status(401).send();
 });
 
