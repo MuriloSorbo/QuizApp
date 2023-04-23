@@ -10,6 +10,7 @@ const waitingRouter = require('./Routes/waiting');
 const nameRouter = require('./Routes/name');
 const mainRouter = require('./Routes/main');
 const usersRouter = require('./Routes/users');
+const nextRouter = require('./Routes/next');
 
 const app = express();
 const port = 3000;
@@ -31,6 +32,7 @@ app.use('/waiting', waitingRouter);
 app.use('/name', nameRouter);
 app.use('/main', mainRouter);
 app.use('/users', usersRouter);
+app.use('/next', nextRouter);
 
 SrcReader.init();
 

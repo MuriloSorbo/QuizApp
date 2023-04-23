@@ -34,5 +34,14 @@ function handleData(data) {
   });
 }
 
+function next() {
+  const url = 'next';
+
+  const request = new XMLHttpRequest();
+  request.open('POST', url);
+  request.addEventListener('load', function () {});
+  request.send();
+}
+
 setInterval(getUsers, 1000);
 getTitle();

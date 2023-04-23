@@ -24,6 +24,10 @@ class SrcReader {
     return this.#curQuestion != -1;
   }
 
+  static getCurQuestion() {
+    return this.#curQuestion;
+  }
+
   static nextQuestion() {
     return ++this.#curQuestion >= this.#src.questions.length
       ? this.#src.questions.length
