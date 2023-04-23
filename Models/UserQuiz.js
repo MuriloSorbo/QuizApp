@@ -1,13 +1,15 @@
 class UserQuiz {
-  constructor(name, status, score) {
+  constructor(name, status, score, curQuestion) {
     this.name = name;
     this.status = status;
     this.score = score;
+    this.curQuestion = curQuestion;
   }
 
-  change(status, score) {
+  update(status, score, curQuestion) {
     this.status = status;
     this.score = score;
+    this.curQuestion = curQuestion;
   }
 }
 

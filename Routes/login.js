@@ -12,22 +12,19 @@ Router.get('/', (req, res) => {
 Router.post('/', (req, res) => {
   const name = req.body.name;
 
-  if (!name)
-  {
+  if (!name) {
     res.redirect('/login');
     return;
   }
 
   req.session.authenticated = true;
-  req.session.question = -1;
-  req.session.correct = 0;
+  req.session.curQuestion = -1;
+  req.session.score = 0;
   req.session.name = name;
 
   if (SrcReader.getSrc().mainPass == name) {
     res.redirect('/main');
-  }
-  else  res.redirect('/waiting');
-  
+  } else res.redirect('/waiting');
 });
 
 module.exports = Router;

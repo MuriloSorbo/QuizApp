@@ -6,6 +6,7 @@ class SrcReader {
 
   static init() {
     this.#curQuestion = -1;
+    this.users = [];
 
     try {
       const fileData = fs.readFileSync('./src.json');
@@ -27,6 +28,16 @@ class SrcReader {
     return ++this.#curQuestion >= this.#src.questions.length
       ? this.#src.questions.length
       : this.#curQuestion;
+  }
+
+  static getUser(compareUser) {
+    let outUser = undefined;
+
+    this.users.forEach((user) => {
+      if (compareUser.name == user.name) outUser = user;
+    });
+
+    return outUser;
   }
 }
 

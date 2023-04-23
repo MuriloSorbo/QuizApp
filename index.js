@@ -9,10 +9,12 @@ const titleRouter = require('./Routes/title');
 const waitingRouter = require('./Routes/waiting');
 const nameRouter = require('./Routes/name');
 const mainRouter = require('./Routes/main');
+const usersRouter = require('./Routes/users');
 
 const app = express();
 const port = 3000;
 
+app.use(express.json());
 app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -28,6 +30,7 @@ app.use('/title', titleRouter);
 app.use('/waiting', waitingRouter);
 app.use('/name', nameRouter);
 app.use('/main', mainRouter);
+app.use('/users', usersRouter);
 
 SrcReader.init();
 
