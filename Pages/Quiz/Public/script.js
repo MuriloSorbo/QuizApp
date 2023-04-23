@@ -1,4 +1,5 @@
 let count = 20;
+let correct = '';
 
 const decrementTimer = setInterval(function () {
   count = Math.max(--count, 0);
@@ -20,15 +21,52 @@ function getNext() {
 }
 
 function handleData(response) {
+  document.getElementById('A').style.removeProperty('background-color');
+  document.getElementById('A').style.removeProperty('border-color');
+  document.getElementById('A').style.removeProperty('color');
+
+  document.getElementById('B').style.removeProperty('background-color');
+  document.getElementById('B').style.removeProperty('border-color');
+  document.getElementById('B').style.removeProperty('color');
+
+  document.getElementById('C').style.removeProperty('background-color');
+  document.getElementById('C').style.removeProperty('border-color');
+  document.getElementById('C').style.removeProperty('color');
+
+  document.getElementById('D').style.removeProperty('background-color');
+  document.getElementById('D').style.removeProperty('border-color');
+  document.getElementById('D').style.removeProperty('color');
+
   const json = JSON.parse(response);
 
   document.getElementById('question').innerHTML = json.Question;
-  document.getElementById('a').innerHTML = json.A;
-  document.getElementById('b').innerHTML = json.B;
-  document.getElementById('c').innerHTML = json.C;
-  document.getElementById('d').innerHTML = json.D;
+  document.getElementById('A').innerHTML = json.A;
+  document.getElementById('B').innerHTML = json.B;
+  document.getElementById('C').innerHTML = json.C;
+  document.getElementById('D').innerHTML = json.D;
 
   count = json.Time;
+  correct = json.Correct;
+}
+
+function select(answer) {
+  document.getElementById('A').style.backgroundColor = '#e74c3c';
+  document.getElementById('A').style.borderColor = '#e74c3c';
+  document.getElementById('A').style.color = '#fff';
+
+  document.getElementById('B').style.backgroundColor = '#e74c3c';
+  document.getElementById('B').style.borderColor = '#e74c3c';
+  document.getElementById('B').style.color = '#fff';
+
+  document.getElementById('C').style.backgroundColor = '#e74c3c';
+  document.getElementById('C').style.borderColor = '#e74c3c';
+  document.getElementById('C').style.color = '#fff';
+
+  document.getElementById('D').style.backgroundColor = '#e74c3c';
+  document.getElementById('D').style.borderColor = '#e74c3c';
+  document.getElementById('D').style.color = '#fff';
+
+  document.getElementById(correct).style.backgroundColor = '#2ecc71';
 }
 
 setInterval(getNext, 1000);
