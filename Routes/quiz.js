@@ -20,7 +20,8 @@ Router.get('/', checkAuthenticated, (req, res) => {
 
   const user = new UserQuiz(name, status, score, curQuestion);
 
-  if (!SrcReader.getUser(user)) SrcReader.users.push(user);
+  if (user.name != SrcReader.getSrc().mainPass && !SrcReader.getUser(user))
+    SrcReader.users.push(user);
 
   res.status(401).send();
 });
