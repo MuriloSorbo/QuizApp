@@ -29,6 +29,7 @@ function handleData(data) {
         <td>${user.name}</td>
         <td>${user.status}</td>
         <td>${user.score}</td>
+        <td>${user.curQuestion}</td>
       </tr>`;
   });
 }
