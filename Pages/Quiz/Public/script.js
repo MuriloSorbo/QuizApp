@@ -1,8 +1,13 @@
-let count = 20;
+let count = 0;
 let correct = '';
+let freezeTime = true;
 
 const decrementTimer = setInterval(function () {
+  if (freezeTime) return;
+
   count = Math.max(--count, 0);
+
+  if (count <= 0) select('X');
 
   document.getElementById('time').innerHTML = count + 's.';
 }, 1000);
@@ -38,7 +43,18 @@ function sendIncorrect(alt)
   request.send();
 }
 
+function sendTimeout(alt)
+{
+  const url = '/answer/timeout';
+
+  const request = new XMLHttpRequest();
+  request.open('POST', url);
+  request.send();
+}
+
 function handleData(response) {
+  freezeTime = false;
+
   document.getElementById('A').style.removeProperty('background-color');
   document.getElementById('A').style.removeProperty('border-color');
   document.getElementById('A').style.removeProperty('color');
@@ -68,6 +84,8 @@ function handleData(response) {
 }
 
 function select(answer) {
+  freezeTime = true;
+
   document.getElementById('A').style.backgroundColor = '#e74c3c';
   document.getElementById('A').style.borderColor = '#e74c3c';
   document.getElementById('A').style.color = '#fff';
@@ -86,8 +104,9 @@ function select(answer) {
 
   document.getElementById(correct).style.backgroundColor = '#2ecc71';
 
-  if (answer == correct) sendCorrect();
-  else sendIncorrect(answer);
+  if      (answer == correct)  sendCorrect();
+  else if (answer == 'X')      sendTimeout();
+  else                 sendIncorrect(answer);
 }
 
 setInterval(getNext, 1000);

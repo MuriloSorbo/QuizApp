@@ -31,4 +31,16 @@ Router.post('/incorrect:alt', checkAuthenticated, (req, res) => {
     res.status(200).send();
 });
 
+Router.post('/timeout', checkAuthenticated, (req, res) => {
+    const name = req.session.name;
+
+    const compareUser = new UserQuiz(name, undefined, undefined, undefined);
+    const user = SrcReader.getUser(compareUser);
+
+    console.log('Timeout');
+    user.update('Tempo esgotado', user.score, user.curQuestion);
+
+    res.status(200).send();
+});
+
 module.exports = Router;
