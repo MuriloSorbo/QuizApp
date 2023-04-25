@@ -22,14 +22,11 @@ Router.get('/', (req, res) => {
   const user = SrcReader.getUser(compareUser);
 
   if (user && user.curQuestion < SrcReader.getCurQuestion()) {
-    console.log('ok');
     res
       .status(200)
       .send(
-        JSON.parse(
-          JSON.stringify(
-            SrcReader.getSrc().questions[SrcReader.getCurQuestion()]
-          )
+        JSON.stringify(
+          SrcReader.getSrc().questions[SrcReader.getCurQuestion()]
         )
       );
 

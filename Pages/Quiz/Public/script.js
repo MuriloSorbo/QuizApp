@@ -20,6 +20,24 @@ function getNext() {
   request.send();
 }
 
+function sendCorrect()
+{
+  const url = '/answer/correct';
+
+  const request = new XMLHttpRequest();
+  request.open('POST', url);
+  request.send();
+}
+
+function sendIncorrect()
+{
+  const url = '/answer/incorrect';
+
+  const request = new XMLHttpRequest();
+  request.open('POST', url);
+  request.send();
+}
+
 function handleData(response) {
   document.getElementById('A').style.removeProperty('background-color');
   document.getElementById('A').style.removeProperty('border-color');
@@ -67,6 +85,9 @@ function select(answer) {
   document.getElementById('D').style.color = '#fff';
 
   document.getElementById(correct).style.backgroundColor = '#2ecc71';
+
+  if (answer == correct) sendCorrect();
+  else sendIncorrect();
 }
 
 setInterval(getNext, 1000);
