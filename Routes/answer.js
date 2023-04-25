@@ -13,19 +13,20 @@ Router.post('/correct', checkAuthenticated, (req, res) => {
     const user = SrcReader.getUser(compareUser);
 
     console.log('Correct');
-    console.log(user.score);
+    user.update('Resposta Correta', user.score + 1, user.curQuestion);
 
     res.status(200).send();
 });
 
-Router.post('/incorrect', checkAuthenticated, (req, res) => {
+Router.post('/incorrect:alt', checkAuthenticated, (req, res) => {
+    const alt = req.params.alt.split(':')[1];
     const name = req.session.name;
 
     const compareUser = new UserQuiz(name, undefined, undefined, undefined);
     const user = SrcReader.getUser(compareUser);
 
     console.log('Incorrect');
-    console.log(user.score);
+    user.update(`Resposta Incorreta (${alt})`, user.score, user.curQuestion);
 
     res.status(200).send();
 });

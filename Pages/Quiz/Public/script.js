@@ -29,9 +29,9 @@ function sendCorrect()
   request.send();
 }
 
-function sendIncorrect()
+function sendIncorrect(alt)
 {
-  const url = '/answer/incorrect';
+  const url = `/answer/incorrect:${alt}`;
 
   const request = new XMLHttpRequest();
   request.open('POST', url);
@@ -87,7 +87,7 @@ function select(answer) {
   document.getElementById(correct).style.backgroundColor = '#2ecc71';
 
   if (answer == correct) sendCorrect();
-  else sendIncorrect();
+  else sendIncorrect(answer);
 }
 
 setInterval(getNext, 1000);
