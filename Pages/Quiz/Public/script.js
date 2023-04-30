@@ -20,13 +20,14 @@ function getNext() {
   request.addEventListener('load', function () {
     if (this.status == 200) {
       handleData(this.responseText);
+    } else if (this.status == 410) {
+      window.location.href = '/finish';
     }
   });
   request.send();
 }
 
-function sendCorrect()
-{
+function sendCorrect() {
   const url = '/answer/correct';
 
   const request = new XMLHttpRequest();
@@ -34,8 +35,7 @@ function sendCorrect()
   request.send();
 }
 
-function sendIncorrect(alt)
-{
+function sendIncorrect(alt) {
   const url = `/answer/incorrect:${alt}`;
 
   const request = new XMLHttpRequest();
@@ -43,8 +43,7 @@ function sendIncorrect(alt)
   request.send();
 }
 
-function sendTimeout(alt)
-{
+function sendTimeout() {
   const url = '/answer/timeout';
 
   const request = new XMLHttpRequest();
@@ -71,7 +70,7 @@ function handleData(response) {
   document.getElementById('D').style.removeProperty('border-color');
   document.getElementById('D').style.removeProperty('color');
 
-  const json = JSON.parse(response);
+  json = JSON.parse(response);
 
   document.getElementById('question').innerHTML = json.Question;
   document.getElementById('A').innerHTML = json.A;
@@ -84,6 +83,10 @@ function handleData(response) {
 }
 
 function select(answer) {
+  if (!correct) {
+    return;
+  }
+
   freezeTime = true;
 
   document.getElementById('A').style.backgroundColor = '#e74c3c';
@@ -104,9 +107,9 @@ function select(answer) {
 
   document.getElementById(correct).style.backgroundColor = '#2ecc71';
 
-  if      (answer == correct)  sendCorrect();
-  else if (answer == 'X')      sendTimeout();
-  else                 sendIncorrect(answer);
+  if (answer == correct) sendCorrect();
+  else if (answer == 'X') sendTimeout();
+  else sendIncorrect(answer);
 }
 
 setInterval(getNext, 1000);

@@ -12,6 +12,7 @@ const mainRouter = require('./Routes/main');
 const usersRouter = require('./Routes/users');
 const nextRouter = require('./Routes/next');
 const answerRouter = require('./Routes/answer');
+const finishRouter = require('./Routes/finish');
 
 const app = express();
 const port = 3000;
@@ -35,6 +36,7 @@ app.use('/main', mainRouter);
 app.use('/users', usersRouter);
 app.use('/next', nextRouter);
 app.use('/answer', answerRouter);
+app.use('/finish', finishRouter);
 
 SrcReader.init();
 
