@@ -12,7 +12,7 @@
       "Time": 30
     },
     {
-      "Question": "Qual comando usado para escrever em uma saída digital (led) no Arduino?",
+      "Question": "`Penis`",
       "A": "digitalWrite(led);",
       "B": "DigitalWrite(led, HIGH);",
       "C": "digitalWrite(led, HIGH);",
